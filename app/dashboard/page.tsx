@@ -11,7 +11,6 @@ import { GreetingHeader } from "@/components/greeting-header"
 import { QuickPaymentDialog } from "@/components/quick-payment-dialog"
 import { DashboardCharts } from "@/components/dashboard-charts"
 import { PWAInstall } from "@/components/pwa-install"
-import { ServiceWorkerRegistration } from "@/components/service-worker"
 import { DevModeIndicator } from "@/components/dev-mode-indicator"
 import { FixedHeader } from "@/components/fixed-header"
 
@@ -47,9 +46,6 @@ export default function DashboardPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-gray-50 pb-16">
-      {/* Service Worker Registration */}
-      <ServiceWorkerRegistration />
-
       {/* Dev Mode Indicator */}
       <DevModeIndicator />
 

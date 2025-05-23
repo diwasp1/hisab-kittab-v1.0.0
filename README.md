@@ -1,30 +1,76 @@
-# Hisab Kitab
+# Hisab Kitab v1.0.0
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+A modern Progressive Web App (PWA) for tracking personal finances and managing money lending/borrowing with friends and family.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/dibas-projects-bc922809/v0-hisab-kitab)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/yikdH4jIrnF)
+## Features
 
-## Overview
+- 💰 Track money you lend and borrow
+- 👥 Manage contacts and their balances
+- 📊 Visual dashboard with financial insights
+- 📱 PWA support for offline functionality
+- 🌓 Dark/Light mode support
+- 📲 Installable on mobile devices
+- 🔄 Real-time balance updates
+- 💳 Quick payment recording
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+## Tech Stack
 
-## Deployment
+- Next.js 15.2.4
+- React 19
+- TypeScript
+- Tailwind CSS
+- Radix UI Components
+- PWA with Workbox
 
-Your project is live at:
+## Prerequisites
 
-**[https://vercel.com/dibas-projects-bc922809/v0-hisab-kitab](https://vercel.com/dibas-projects-bc922809/v0-hisab-kitab)**
+- Node.js 18.18.0 or higher
+- npm or pnpm
 
-## Build your app
+## Installation
 
-Continue building your app on:
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/hisab-kitab.git
+cd hisab-kitab
+```
 
-**[https://v0.dev/chat/projects/yikdH4jIrnF](https://v0.dev/chat/projects/yikdH4jIrnF)**
+2. Install dependencies:
+```bash
+npm install --legacy-peer-deps
+# or
+pnpm install --no-frozen-lockfile
+```
 
-## How It Works
+3. Run the development server:
+```bash
+npm run dev
+# or
+pnpm dev
+```
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+4. Build for production:
+```bash
+npm run build
+npm run start
+```
+
+## PWA Features
+
+- Offline functionality
+- Installable on mobile devices
+- Push notifications (coming soon)
+- Background sync for offline transactions
+- Automatic updates
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+MIT License - See [LICENSE](LICENSE) for details.
+
+## Contact
+
+For any queries or support, please open an issue in the repository.

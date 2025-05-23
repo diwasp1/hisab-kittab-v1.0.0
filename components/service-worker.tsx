@@ -2,66 +2,73 @@
 
 import { useEffect } from "react"
 
-export function ServiceWorkerRegistration() {
+export function ServiceWorker() {
   useEffect(() => {
-    // Only register service worker in production or on localhost
-    if (typeof window !== "undefined" && "serviceWorker" in navigator) {
-      // Check if we're on HTTPS or localhost
-      const isSecureContext =
-        window.location.protocol === "https:" ||
-        window.location.hostname === "localhost" ||
-        window.location.hostname === "127.0.0.1" ||
-        window.location.hostname.endsWith(".local")
-
-      if (!isSecureContext) {
-        console.log("Service Worker not registered: Requires HTTPS or localhost")
-        return
-      }
-
-      navigator.serviceWorker
-        .register("/sw.js", {
-          scope: "/",
-          updateViaCache: "none",
-        })
-        .then((registration) => {
-          console.log("Service Worker registered successfully:", registration)
-
-          // Check for updates
-          registration.addEventListener("updatefound", () => {
-            const newWorker = registration.installing
-            if (newWorker) {
-              newWorker.addEventListener("statechange", () => {
-                if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
-                  // New content is available, show update notification
-                  if (confirm("New version available! Reload to update?")) {
-                    window.location.reload()
-                  }
-                }
-              })
+    const registerSW = async () => {
+      // Only register SW in production and if supported
+      if (
+        typeof window !== "undefined" &&
+        "serviceWorker" in navigator &&
+        process.env.NODE_ENV === "production"
+      ) {
+        try {
+          // Wait for the window to load
+          await new Promise((resolve) => {
+            if (document.readyState === "complete") {
+              resolve(undefined)
+            } else {
+              window.addEventListener("load", resolve)
             }
           })
 
-          // Check for updates periodically
-          setInterval(() => {
-            registration.update()
-          }, 60000) // Check every minute
-        })
-        .catch((error) => {
-          if (error.message.includes("insecure")) {
-            console.log("Service Worker requires HTTPS. PWA features will be limited.")
-          } else {
-            console.error("Service Worker registration failed:", error)
-          }
-        })
+          // Register the service worker
+          const registration = await navigator.serviceWorker.register("/sw.js")
+          console.log("SW registered:", registration)
 
-      // Listen for messages from service worker
-      navigator.serviceWorker.addEventListener("message", (event) => {
-        if (event.data && event.data.type === "CACHE_UPDATED") {
-          console.log("Cache updated")
+          // Handle updates
+          if (registration.waiting) {
+            // New content is available, but waiting
+            notifyUserOfUpdate()
+          }
+
+          registration.addEventListener("updatefound", () => {
+            const newWorker = registration.installing
+            if (!newWorker) return
+
+            newWorker.addEventListener("statechange", () => {
+              if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+                notifyUserOfUpdate()
+              }
+            })
+          })
+
+        } catch (error) {
+          console.error("SW registration failed:", error)
         }
-      })
+      }
+    }
+
+    const notifyUserOfUpdate = () => {
+      const shouldUpdate = window.confirm(
+        "New version available! Would you like to update?"
+      )
+      if (shouldUpdate) {
+        window.location.reload()
+      }
+    }
+
+    registerSW()
+
+    // Cleanup function
+    return () => {
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.ready.then((registration) => {
+          registration.unregister()
+        })
+      }
     }
   }, [])
 
+  // This component doesn't render anything
   return null
 }

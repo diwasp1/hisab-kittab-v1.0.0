@@ -5,16 +5,18 @@ import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { DemoProvider } from "@/contexts/demo-context"
 import { ScrollToTop } from "@/components/scroll-to-top"
+import { ServiceWorker } from "@/components/service-worker"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Hisab Kittab - Money Tracking App",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
+  title: "Hisab Kitab - Money Tracking App",
   description: "Track money you lent and borrowed with friends and family",
   keywords: ["money tracking", "finance", "lending", "borrowing", "personal finance"],
-  authors: [{ name: "Hisab Kittab Team" }],
-  creator: "Hisab Kittab",
-  publisher: "Hisab Kittab",
+  authors: [{ name: "Hisab Kitab Team" }],
+  creator: "Hisab Kitab",
+  publisher: "Hisab Kitab",
   formatDetection: {
     email: false,
     address: false,
@@ -24,25 +26,25 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Hisab Kittab",
+    title: "Hisab Kitab",
   },
   openGraph: {
     type: "website",
-    siteName: "Hisab Kittab",
-    title: "Hisab Kittab - Money Tracking App",
+    siteName: "Hisab Kitab",
+    title: "Hisab Kitab - Money Tracking App",
     description: "Track money you lent and borrowed with friends and family",
     images: [
       {
         url: "/icons/icon-512x512.png",
         width: 512,
         height: 512,
-        alt: "Hisab Kittab Logo",
+        alt: "Hisab Kitab Logo",
       },
     ],
   },
   twitter: {
     card: "summary",
-    title: "Hisab Kittab - Money Tracking App",
+    title: "Hisab Kitab - Money Tracking App",
     description: "Track money you lent and borrowed with friends and family",
     images: ["/icons/icon-512x512.png"],
   },
@@ -59,15 +61,14 @@ export const metadata: Metadata = {
       { url: "/icons/icon-192x192.png", sizes: "192x192", type: "image/png" },
     ],
   },
-    generator: 'v0.dev'
 }
 
 export const viewport: Viewport = {
-  themeColor: "#00D632",
+  themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  maximumScale: 5,
+  userScalable: true,
   viewportFit: "cover",
 }
 
@@ -79,28 +80,24 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* PWA Meta Tags */}
-        <meta name="application-name" content="Hisab Kittab" />
+        <meta name="application-name" content="Hisab Kitab" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Hisab Kittab" />
+        <meta name="apple-mobile-web-app-title" content="Hisab Kitab" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="msapplication-config" content="/icons/browserconfig.xml" />
-        <meta name="msapplication-TileColor" content="#00D632" />
+        <meta name="msapplication-TileColor" content="#000000" />
         <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="theme-color" content="#000000" />
 
-        {/* Apple Touch Icons */}
         <link rel="apple-touch-icon" href="/icons/icon-152x152.png" />
         <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192x192.png" />
-
-        {/* Favicon */}
         <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-72x72.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-72x72.png" />
+        <link rel="manifest" href="/manifest.json" />
         <link rel="shortcut icon" href="/favicon.ico" />
 
-        {/* Splash Screens for iOS */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <link
           rel="apple-touch-startup-image"
@@ -112,6 +109,7 @@ export default function RootLayout({
         <DemoProvider>
           <ThemeProvider>
             <ScrollToTop />
+            <ServiceWorker />
             {children}
           </ThemeProvider>
         </DemoProvider>
