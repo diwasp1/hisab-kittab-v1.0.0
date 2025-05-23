@@ -8,13 +8,11 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Save } from "lucide-react"
 import { useDemoMode } from "@/contexts/demo-context"
-import { useToast } from "@/hooks/use-toast"
 import { PageHeader } from "@/components/page-header"
 import { AvatarSelector } from "@/components/avatar-selector"
 
 export default function ProfilePage() {
   const { profile } = useDemoMode()
-  const { toast } = useToast()
   const [isEditing, setIsEditing] = useState(false)
   const [fullName, setFullName] = useState(profile?.full_name || "")
   const [email, setEmail] = useState("demo@hisabkitab.com")
@@ -23,10 +21,6 @@ export default function ProfilePage() {
 
   function handleSave() {
     // In a real app, we would update the profile here
-    toast({
-      title: "Profile Updated",
-      description: "Your profile has been updated successfully.",
-    })
     setIsEditing(false)
   }
 

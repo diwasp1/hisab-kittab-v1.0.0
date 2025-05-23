@@ -8,8 +8,7 @@ import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Bell, Globe, Shield, Download, Upload, Trash2, HelpCircle, AlertTriangle, ExternalLink } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
-import { useDemoMode, CURRENCIES, LANGUAGES, type Currency, type Language } from "@/contexts/demo-context"
+import { useDemoMode, CURRENCIES, type Currency, type Language } from "@/contexts/demo-context"
 import {
   Dialog,
   DialogContent,
@@ -23,7 +22,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { PageHeader } from "@/components/page-header"
 
 export default function SettingsPage() {
-  const { toast } = useToast()
   const { settings, setCurrency, setLanguage, setNotifications, setDarkMode, exportData, importData, clearAllData } =
     useDemoMode()
 
@@ -36,18 +34,10 @@ export default function SettingsPage() {
 
   function handleCurrencyChange(value: string) {
     setCurrency(value as Currency)
-    toast({
-      title: "Currency Updated",
-      description: `Currency has been changed to ${CURRENCIES[value as Currency].name}`,
-    })
   }
 
   function handleLanguageChange(value: string) {
     setLanguage(value as Language)
-    toast({
-      title: "Language Updated",
-      description: `Language has been changed to ${LANGUAGES[value as Language]}`,
-    })
   }
 
   async function handleExportData() {
@@ -65,17 +55,8 @@ export default function SettingsPage() {
       a.click()
       document.body.removeChild(a)
       URL.revokeObjectURL(url)
-
-      toast({
-        title: "Export Successful",
-        description: "Your data has been exported successfully.",
-      })
     } catch (error) {
-      toast({
-        title: "Export Failed",
-        description: "There was an error exporting your data.",
-        variant: "destructive",
-      })
+      console.error("Export Failed", error)
     } finally {
       setIsExporting(false)
     }
@@ -86,20 +67,12 @@ export default function SettingsPage() {
     try {
       const success = await importData(importData1)
       if (success) {
-        toast({
-          title: "Import Successful",
-          description: "Your data has been imported successfully.",
-        })
         setImportDialogOpen(false)
       } else {
         throw new Error("Import failed")
       }
     } catch (error) {
-      toast({
-        title: "Import Failed",
-        description: "There was an error importing your data. Please check the format.",
-        variant: "destructive",
-      })
+      console.error("Import Failed", error)
     } finally {
       setIsImporting(false)
     }
@@ -110,20 +83,12 @@ export default function SettingsPage() {
     try {
       const success = await clearAllData()
       if (success) {
-        toast({
-          title: "Data Cleared",
-          description: "All your data has been cleared successfully.",
-        })
         setClearDialogOpen(false)
       } else {
         throw new Error("Clear failed")
       }
     } catch (error) {
-      toast({
-        title: "Clear Failed",
-        description: "There was an error clearing your data.",
-        variant: "destructive",
-      })
+      console.error("Clear Failed", error)
     } finally {
       setIsClearing(false)
     }
@@ -131,10 +96,7 @@ export default function SettingsPage() {
 
   function openExternalLink(url: string) {
     // In a real app, this would open an external link
-    toast({
-      title: "External Link",
-      description: `This would open: ${url}`,
-    })
+    console.log(`This would open: ${url}`)
   }
 
   return (
@@ -163,12 +125,6 @@ export default function SettingsPage() {
                 checked={settings.notifications}
                 onCheckedChange={(checked) => {
                   setNotifications(checked)
-                  toast({
-                    title: checked ? "Notifications Enabled" : "Notifications Disabled",
-                    description: checked
-                      ? "You will now receive notifications for new transactions."
-                      : "You will no longer receive notifications for new transactions.",
-                  })
                 }}
               />
             </div>
@@ -182,10 +138,6 @@ export default function SettingsPage() {
                 checked={settings.darkMode}
                 onCheckedChange={(checked) => {
                   setDarkMode(checked)
-                  toast({
-                    title: checked ? "Dark Mode Enabled" : "Dark Mode Disabled",
-                    description: checked ? "Dark mode has been enabled." : "Dark mode has been disabled.",
-                  })
                 }}
               />
             </div>

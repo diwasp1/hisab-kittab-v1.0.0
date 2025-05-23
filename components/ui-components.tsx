@@ -1,5 +1,7 @@
 "use client"
 
+import { DialogTrigger } from "@/components/ui/dialog"
+
 import { useState, type ReactNode } from "react"
 import { Button } from "@/components/ui/button"
 import {
@@ -7,7 +9,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog"
@@ -17,13 +18,11 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Trash2, Calendar, User, CreditCard, FileText, Pencil, AlertTriangle } from "lucide-react"
 import type { Contact } from "@/types/database"
-import { useToast } from "@/hooks/use-toast"
 import { useDemoMode } from "@/contexts/demo-context"
 import { AvatarSelector } from "@/components/avatar-selector"
 
 export function AddContactDialog({ children }: { children?: ReactNode }) {
   const [open, setOpen] = useState(false)
-  const { toast } = useToast()
   const { addContact } = useDemoMode()
   const [avatarUrl, setAvatarUrl] = useState("")
 
@@ -41,10 +40,6 @@ export function AddContactDialog({ children }: { children?: ReactNode }) {
       photo_url: avatarUrl || null,
     })
 
-    toast({
-      title: "Success",
-      description: "Contact added successfully",
-    })
     setOpen(false)
   }
 
@@ -97,16 +92,11 @@ export function AddContactDialog({ children }: { children?: ReactNode }) {
 
 export function EditContactDialog({ contact, children }: { contact: Contact; children?: ReactNode }) {
   const [open, setOpen] = useState(false)
-  const { toast } = useToast()
   const [avatarUrl, setAvatarUrl] = useState(contact.photo_url || "")
 
   async function handleSubmit(formData: FormData) {
     // In a real app, we would update the contact in the database
     // For now, just show a toast
-    toast({
-      title: "Contact Updated",
-      description: "Contact has been updated successfully",
-    })
     setOpen(false)
   }
 
@@ -165,7 +155,6 @@ export function EditContactDialog({ contact, children }: { contact: Contact; chi
 
 export function AddTransactionDialog({ contacts, children }: { contacts: Contact[]; children?: ReactNode }) {
   const [open, setOpen] = useState(false)
-  const { toast } = useToast()
   const { addTransaction, settings } = useDemoMode()
 
   async function handleSubmit(formData: FormData) {
@@ -183,10 +172,6 @@ export function AddTransactionDialog({ contacts, children }: { contacts: Contact
       transaction_date: transactionDate,
     })
 
-    toast({
-      title: "Success",
-      description: "Transaction added successfully",
-    })
     setOpen(false)
   }
 
@@ -269,7 +254,6 @@ export function AddTransactionDialog({ contacts, children }: { contacts: Contact
 }
 
 export function DeleteContactButton({ id }: { id: string }) {
-  const { toast } = useToast()
   const { deleteContact, balances, formatAmount, contacts } = useDemoMode()
   const [showConfirmDialog, setShowConfirmDialog] = useState(false)
   const [showWarningDialog, setShowWarningDialog] = useState(false)
@@ -289,10 +273,6 @@ export function DeleteContactButton({ id }: { id: string }) {
 
   async function confirmDelete() {
     deleteContact(id)
-    toast({
-      title: "Success",
-      description: "Contact deleted successfully",
-    })
     setShowConfirmDialog(false)
   }
 
@@ -373,16 +353,10 @@ export function DeleteContactButton({ id }: { id: string }) {
 }
 
 export function DeleteTransactionButton({ id }: { id: string }) {
-  const { toast } = useToast()
   const { deleteTransaction } = useDemoMode()
 
   async function handleDelete() {
     deleteTransaction(id)
-
-    toast({
-      title: "Success",
-      description: "Transaction deleted successfully",
-    })
   }
 
   return (

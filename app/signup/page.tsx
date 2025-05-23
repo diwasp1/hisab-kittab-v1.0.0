@@ -71,40 +71,44 @@ export default function SignUpPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-primary/5 via-background to-background">
-      <div className="flex-1 flex flex-col items-center justify-center p-6">
-        <div className="w-full max-w-sm space-y-8">
-          {/* App Logo */}
+      <div className="flex-1 flex flex-col items-center justify-center p-4 py-6">
+        <div className="w-full max-w-sm space-y-5">
+          {/* App Logo - Reduced size and spacing */}
           <div className="flex flex-col items-center justify-center">
-            <AppLogo size="lg" className="mb-4" />
-            <h1 className="text-3xl font-bold text-center bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+            <AppLogo size="md" className="mb-3" />
+            <h1 className="text-2xl font-bold text-center bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
               Hisab Kitab
             </h1>
-            <p className="text-sm text-muted-foreground text-center mt-2">Track money you lent and borrowed</p>
+            <p className="text-xs text-muted-foreground text-center mt-1">Track money you lent and borrowed</p>
           </div>
 
-          {/* Signup Form */}
-          <div className="bg-card rounded-xl p-6 shadow-lg border">
-            <h2 className="text-xl font-semibold mb-4 text-center">Create Account</h2>
+          {/* Signup Form - Reduced padding and spacing */}
+          <div className="bg-card rounded-xl p-5 shadow-lg border">
+            <h2 className="text-lg font-semibold mb-3 text-center">Create Account</h2>
 
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="phone">Phone</TabsTrigger>
-                <TabsTrigger value="email">Email</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-2 mb-3">
+                <TabsTrigger value="phone" className="text-sm">
+                  Phone
+                </TabsTrigger>
+                <TabsTrigger value="email" className="text-sm">
+                  Email
+                </TabsTrigger>
               </TabsList>
 
-              <TabsContent value="phone" className="space-y-4 mt-4">
-                <form onSubmit={handlePhoneSignUp} className="space-y-4">
+              <TabsContent value="phone" className="space-y-3 mt-3">
+                <form onSubmit={handlePhoneSignUp} className="space-y-3">
                   {!showOtpInput ? (
                     <>
                       <div className="space-y-2">
                         <div className="relative">
-                          <User className="absolute left-3 top-3.5 h-5 w-5 text-muted-foreground" />
+                          <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                           <Input
                             type="text"
                             placeholder="Full Name"
                             value={fullName}
                             onChange={(e) => setFullName(e.target.value)}
-                            className="h-12 pl-10 pr-4"
+                            className="h-10 pl-9 pr-4 text-sm"
                             disabled={isLoading}
                             required
                           />
@@ -112,13 +116,13 @@ export default function SignUpPage() {
                       </div>
                       <div className="space-y-2">
                         <div className="relative">
-                          <Phone className="absolute left-3 top-3.5 h-5 w-5 text-muted-foreground" />
+                          <Phone className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                           <Input
                             type="tel"
                             placeholder="+91 9876543210"
                             value={phoneNumber}
                             onChange={(e) => setPhoneNumber(e.target.value)}
-                            className="h-12 pl-10 pr-4"
+                            className="h-10 pl-9 pr-4 text-sm"
                             disabled={isLoading}
                             required
                           />
@@ -127,7 +131,7 @@ export default function SignUpPage() {
                     </>
                   ) : (
                     <div className="space-y-2">
-                      <p className="text-sm text-muted-foreground text-center">
+                      <p className="text-xs text-muted-foreground text-center">
                         Enter the 6-digit code sent to {phoneNumber}
                       </p>
                       <Input
@@ -135,7 +139,7 @@ export default function SignUpPage() {
                         placeholder="Enter OTP"
                         value={otp}
                         onChange={(e) => setOtp(e.target.value)}
-                        className="h-12 text-center text-lg tracking-widest"
+                        className="h-10 text-center text-base tracking-widest"
                         maxLength={6}
                         disabled={isLoading}
                         required
@@ -144,7 +148,7 @@ export default function SignUpPage() {
                   )}
                   <Button
                     type="submit"
-                    className="w-full h-12 text-base font-medium"
+                    className="w-full h-10 text-sm font-medium"
                     disabled={isLoading || (!showOtpInput && !agreeToTerms)}
                   >
                     {isLoading
@@ -154,13 +158,13 @@ export default function SignUpPage() {
                       : showOtpInput
                         ? "Create Account"
                         : "Send OTP"}
-                    {!isLoading && <ArrowRight className="ml-2 h-5 w-5" />}
+                    {!isLoading && <ArrowRight className="ml-2 h-4 w-4" />}
                   </Button>
                   {showOtpInput && (
                     <Button
                       type="button"
                       variant="ghost"
-                      className="w-full"
+                      className="w-full h-8 text-xs"
                       onClick={() => {
                         setShowOtpInput(false)
                         setOtp("")
@@ -172,17 +176,17 @@ export default function SignUpPage() {
                 </form>
               </TabsContent>
 
-              <TabsContent value="email" className="space-y-4 mt-4">
-                <form onSubmit={handleEmailSignUp} className="space-y-4">
+              <TabsContent value="email" className="space-y-3 mt-3">
+                <form onSubmit={handleEmailSignUp} className="space-y-3">
                   <div className="space-y-2">
                     <div className="relative">
-                      <User className="absolute left-3 top-3.5 h-5 w-5 text-muted-foreground" />
+                      <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                       <Input
                         type="text"
                         placeholder="Full Name"
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
-                        className="h-12 pl-10 pr-4"
+                        className="h-10 pl-9 pr-4 text-sm"
                         disabled={isLoading}
                         required
                       />
@@ -190,13 +194,13 @@ export default function SignUpPage() {
                   </div>
                   <div className="space-y-2">
                     <div className="relative">
-                      <Mail className="absolute left-3 top-3.5 h-5 w-5 text-muted-foreground" />
+                      <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                       <Input
                         type="email"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="h-12 pl-10 pr-4"
+                        className="h-10 pl-9 pr-4 text-sm"
                         disabled={isLoading}
                         required
                       />
@@ -204,13 +208,13 @@ export default function SignUpPage() {
                   </div>
                   <div className="space-y-2">
                     <div className="relative">
-                      <Lock className="absolute left-3 top-3.5 h-5 w-5 text-muted-foreground" />
+                      <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                       <Input
                         type="password"
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="h-12 pl-10 pr-4"
+                        className="h-10 pl-9 pr-4 text-sm"
                         disabled={isLoading}
                         required
                       />
@@ -218,22 +222,22 @@ export default function SignUpPage() {
                   </div>
                   <Button
                     type="submit"
-                    className="w-full h-12 text-base font-medium"
+                    className="w-full h-10 text-sm font-medium"
                     disabled={isLoading || !agreeToTerms}
                   >
                     {isLoading ? "Creating Account..." : "Sign Up"}
-                    {!isLoading && <ArrowRight className="ml-2 h-5 w-5" />}
+                    {!isLoading && <ArrowRight className="ml-2 h-4 w-4" />}
                   </Button>
                 </form>
               </TabsContent>
             </Tabs>
 
-            {/* Terms and Conditions */}
-            <div className="flex items-center space-x-2 mt-4">
-              <Checkbox id="terms" checked={agreeToTerms} onCheckedChange={setAgreeToTerms} />
+            {/* Terms and Conditions - Reduced spacing */}
+            <div className="flex items-start space-x-2 mt-3">
+              <Checkbox id="terms" checked={agreeToTerms} onCheckedChange={setAgreeToTerms} className="mt-0.5" />
               <label
                 htmlFor="terms"
-                className="text-sm text-muted-foreground leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                className="text-xs text-muted-foreground leading-tight peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
                 I agree to the{" "}
                 <a href="#" className="text-primary hover:underline">
@@ -246,25 +250,25 @@ export default function SignUpPage() {
               </label>
             </div>
 
-            <div className="mt-6 flex items-center">
+            <div className="mt-4 flex items-center">
               <div className="flex-1 border-t"></div>
-              <span className="px-3 text-xs text-muted-foreground">OR</span>
+              <span className="px-2 text-xs text-muted-foreground">OR</span>
               <div className="flex-1 border-t"></div>
             </div>
 
             {/* Google Sign Up */}
             <Button
               variant="outline"
-              className="w-full h-12 mt-4 text-base font-medium"
+              className="w-full h-10 mt-3 text-sm font-medium"
               onClick={handleGoogleSignUp}
               disabled={isLoading || !agreeToTerms}
             >
-              <Chrome className="mr-2 h-5 w-5" />
+              <Chrome className="mr-2 h-4 w-4" />
               Continue with Google
             </Button>
           </div>
 
-          <p className="text-center text-sm text-muted-foreground">
+          <p className="text-center text-xs text-muted-foreground">
             Already have an account?{" "}
             <Link href="/login" className="font-medium text-primary hover:underline">
               Sign in

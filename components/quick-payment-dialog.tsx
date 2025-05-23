@@ -9,7 +9,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { useDemoMode } from "@/contexts/demo-context"
-import { useToast } from "@/hooks/use-toast"
 import { Calendar } from "lucide-react"
 
 interface QuickPaymentDialogProps {
@@ -33,7 +32,6 @@ export function QuickPaymentDialog({
   const [paymentAmount, setPaymentAmount] = useState("")
   const [description, setDescription] = useState("")
   const { addTransaction, formatAmount, settings, balances } = useDemoMode()
-  const { toast } = useToast()
   const today = new Date().toISOString().split("T")[0]
 
   // Find the current balance for this contact
@@ -79,11 +77,6 @@ export function QuickPaymentDialog({
     e.preventDefault()
 
     if (!paymentAmount || Number.parseFloat(paymentAmount) <= 0) {
-      toast({
-        title: "Invalid Amount",
-        description: "Please enter a valid amount greater than zero.",
-        variant: "destructive",
-      })
       return
     }
 
@@ -95,11 +88,7 @@ export function QuickPaymentDialog({
       transaction_date: today,
     })
 
-    toast({
-      title: "Success",
-      description: `Transaction added successfully`,
-    })
-
+    // Close dialog and reset form without showing redundant toast
     setOpen(false)
     setDescription("")
     setPaymentAmount("")
@@ -149,6 +138,15 @@ export function QuickPaymentDialog({
                     : `Enter amount (Remaining: ${formatAmount(getAppropriateAmount())})`
               }
               required
+              // Only allow focus for custom mode, disable for fixed amounts
+              readOnly={mode !== "custom"}
+              // Add this to prevent keyboard from opening for fixed amounts
+              onClick={(e) => {
+                if (mode !== "custom") {
+                  // Blur the input to prevent keyboard from showing
+                  e.currentTarget.blur()
+                }
+              }}
             />
           </div>
 

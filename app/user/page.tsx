@@ -10,12 +10,10 @@ import { signOut } from "@/app/actions/auth"
 import { useState } from "react"
 import { PageHeader } from "@/components/page-header"
 import { AvatarSelector } from "@/components/avatar-selector"
-import { useToast } from "@/hooks/use-toast"
 
 export default function UserPage() {
   const { profile } = useDemoMode()
   const router = useRouter()
-  const { toast } = useToast()
   const [isLoading, setIsLoading] = useState(false)
   const [avatarUrl, setAvatarUrl] = useState(profile?.photo_url || profile?.avatar_url || "")
 
@@ -31,11 +29,6 @@ export default function UserPage() {
       }
     } catch (error) {
       console.error("Error signing out:", error)
-      toast({
-        title: "Error",
-        description: "Failed to sign out. Please try again.",
-        variant: "destructive",
-      })
       setIsLoading(false)
     }
   }

@@ -3,7 +3,6 @@ import "./globals.css"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Toaster } from "@/components/ui/toaster"
 import { DemoProvider } from "@/contexts/demo-context"
 import { ScrollToTop } from "@/components/scroll-to-top"
 
@@ -114,7 +113,6 @@ export default function RootLayout({
           <ThemeProvider>
             <ScrollToTop />
             {children}
-            <Toaster />
           </ThemeProvider>
         </DemoProvider>
       </body>

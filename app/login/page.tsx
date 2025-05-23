@@ -68,46 +68,50 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-primary/5 via-background to-background">
-      <div className="flex-1 flex flex-col items-center justify-center p-6">
-        <div className="w-full max-w-sm space-y-8">
-          {/* App Logo */}
+      <div className="flex-1 flex flex-col items-center justify-center p-4 py-6">
+        <div className="w-full max-w-sm space-y-6">
+          {/* App Logo - Reduced size and spacing */}
           <div className="flex flex-col items-center justify-center">
-            <AppLogo size="lg" className="mb-4" />
-            <h1 className="text-3xl font-bold text-center bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+            <AppLogo size="md" className="mb-3" />
+            <h1 className="text-2xl font-bold text-center bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
               Hisab Kitab
             </h1>
-            <p className="text-sm text-muted-foreground text-center mt-2">Track money you lent and borrowed</p>
+            <p className="text-xs text-muted-foreground text-center mt-1">Track money you lent and borrowed</p>
           </div>
 
-          {/* Login Form */}
-          <div className="bg-card rounded-xl p-6 shadow-lg border">
-            <h2 className="text-xl font-semibold mb-4 text-center">Welcome Back</h2>
+          {/* Login Form - Reduced padding and spacing */}
+          <div className="bg-card rounded-xl p-5 shadow-lg border">
+            <h2 className="text-lg font-semibold mb-3 text-center">Welcome Back</h2>
 
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="phone">Phone</TabsTrigger>
-                <TabsTrigger value="email">Email</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-2 mb-3">
+                <TabsTrigger value="phone" className="text-sm">
+                  Phone
+                </TabsTrigger>
+                <TabsTrigger value="email" className="text-sm">
+                  Email
+                </TabsTrigger>
               </TabsList>
 
-              <TabsContent value="phone" className="space-y-4 mt-4">
-                <form onSubmit={handlePhoneLogin} className="space-y-4">
+              <TabsContent value="phone" className="space-y-3 mt-3">
+                <form onSubmit={handlePhoneLogin} className="space-y-3">
                   {!showOtpInput ? (
                     <div className="space-y-2">
                       <div className="relative">
-                        <Phone className="absolute left-3 top-3.5 h-5 w-5 text-muted-foreground" />
+                        <Phone className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                         <Input
                           type="tel"
                           placeholder="+91 9876543210"
                           value={phoneNumber}
                           onChange={(e) => setPhoneNumber(e.target.value)}
-                          className="h-12 pl-10 pr-4"
+                          className="h-10 pl-9 pr-4 text-sm"
                           disabled={isLoading}
                         />
                       </div>
                     </div>
                   ) : (
                     <div className="space-y-2">
-                      <p className="text-sm text-muted-foreground text-center">
+                      <p className="text-xs text-muted-foreground text-center">
                         Enter the 6-digit code sent to {phoneNumber}
                       </p>
                       <Input
@@ -115,13 +119,13 @@ export default function LoginPage() {
                         placeholder="Enter OTP"
                         value={otp}
                         onChange={(e) => setOtp(e.target.value)}
-                        className="h-12 text-center text-lg tracking-widest"
+                        className="h-10 text-center text-base tracking-widest"
                         maxLength={6}
                         disabled={isLoading}
                       />
                     </div>
                   )}
-                  <Button type="submit" className="w-full h-12 text-base font-medium" disabled={isLoading}>
+                  <Button type="submit" className="w-full h-10 text-sm font-medium" disabled={isLoading}>
                     {isLoading
                       ? showOtpInput
                         ? "Verifying..."
@@ -129,13 +133,13 @@ export default function LoginPage() {
                       : showOtpInput
                         ? "Verify OTP"
                         : "Send OTP"}
-                    {!isLoading && <ArrowRight className="ml-2 h-5 w-5" />}
+                    {!isLoading && <ArrowRight className="ml-2 h-4 w-4" />}
                   </Button>
                   {showOtpInput && (
                     <Button
                       type="button"
                       variant="ghost"
-                      className="w-full"
+                      className="w-full h-8 text-xs"
                       onClick={() => {
                         setShowOtpInput(false)
                         setOtp("")
@@ -147,63 +151,63 @@ export default function LoginPage() {
                 </form>
               </TabsContent>
 
-              <TabsContent value="email" className="space-y-4 mt-4">
-                <form onSubmit={handleEmailLogin} className="space-y-4">
+              <TabsContent value="email" className="space-y-3 mt-3">
+                <form onSubmit={handleEmailLogin} className="space-y-3">
                   <div className="space-y-2">
                     <div className="relative">
-                      <Mail className="absolute left-3 top-3.5 h-5 w-5 text-muted-foreground" />
+                      <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                       <Input
                         type="text"
                         placeholder="Email or Phone"
                         value={emailOrPhone}
                         onChange={(e) => setEmailOrPhone(e.target.value)}
-                        className="h-12 pl-10 pr-4"
+                        className="h-10 pl-9 pr-4 text-sm"
                         disabled={isLoading}
                       />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <div className="relative">
-                      <Lock className="absolute left-3 top-3.5 h-5 w-5 text-muted-foreground" />
+                      <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                       <Input
                         type="password"
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="h-12 pl-10 pr-4"
+                        className="h-10 pl-9 pr-4 text-sm"
                         disabled={isLoading}
                       />
                     </div>
                   </div>
-                  <Button type="submit" className="w-full h-12 text-base font-medium" disabled={isLoading}>
+                  <Button type="submit" className="w-full h-10 text-sm font-medium" disabled={isLoading}>
                     {isLoading ? "Signing In..." : "Sign In"}
-                    {!isLoading && <ArrowRight className="ml-2 h-5 w-5" />}
+                    {!isLoading && <ArrowRight className="ml-2 h-4 w-4" />}
                   </Button>
                 </form>
               </TabsContent>
             </Tabs>
 
-            <div className="mt-6 flex items-center">
+            <div className="mt-4 flex items-center">
               <div className="flex-1 border-t"></div>
-              <span className="px-3 text-xs text-muted-foreground">OR</span>
+              <span className="px-2 text-xs text-muted-foreground">OR</span>
               <div className="flex-1 border-t"></div>
             </div>
 
             {/* Google Sign In */}
             <Button
               variant="outline"
-              className="w-full h-12 mt-4 text-base font-medium"
+              className="w-full h-10 mt-3 text-sm font-medium"
               onClick={handleGoogleLogin}
               disabled={isLoading}
             >
-              <Chrome className="mr-2 h-5 w-5" />
+              <Chrome className="mr-2 h-4 w-4" />
               Continue with Google
             </Button>
 
             {/* Demo Mode */}
             <Button
               variant="outline"
-              className="w-full h-12 mt-3 text-base font-medium"
+              className="w-full h-10 mt-2 text-sm font-medium"
               onClick={handleDemoLogin}
               disabled={isLoading}
             >
@@ -211,7 +215,7 @@ export default function LoginPage() {
             </Button>
           </div>
 
-          <p className="text-center text-sm text-muted-foreground">
+          <p className="text-center text-xs text-muted-foreground">
             Don&apos;t have an account?{" "}
             <a href="/signup" className="font-medium text-primary hover:underline">
               Sign up

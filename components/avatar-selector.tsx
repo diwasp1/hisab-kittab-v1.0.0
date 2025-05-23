@@ -10,7 +10,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Camera, LinkIcon } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
 
 // Sample avatar options
 const AVATAR_OPTIONS = [
@@ -33,7 +32,6 @@ export function AvatarSelector({ currentAvatarUrl, name, onAvatarChange, size = 
   const [isOpen, setIsOpen] = useState(false)
   const [activeTab, setActiveTab] = useState("gallery")
   const [urlInput, setUrlInput] = useState("")
-  const { toast } = useToast()
 
   const sizeClasses = {
     sm: "h-10 w-10",
@@ -56,11 +54,6 @@ export function AvatarSelector({ currentAvatarUrl, name, onAvatarChange, size = 
   const handleSelectAvatar = (url: string) => {
     onAvatarChange(url)
     setIsOpen(false)
-    toast({
-      title: "Avatar Updated",
-      description: "Your avatar has been updated successfully.",
-      duration: 3000, // 3 seconds
-    })
   }
 
   const handleUrlSubmit = (e: React.FormEvent) => {
@@ -69,11 +62,6 @@ export function AvatarSelector({ currentAvatarUrl, name, onAvatarChange, size = 
       onAvatarChange(urlInput.trim())
       setIsOpen(false)
       setUrlInput("")
-      toast({
-        title: "Avatar Updated",
-        description: "Your avatar has been updated successfully.",
-        duration: 3000, // 3 seconds
-      })
     }
   }
 
