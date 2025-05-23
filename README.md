@@ -31,7 +31,7 @@ A modern Progressive Web App (PWA) for tracking personal finances and managing m
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/hisab-kitab.git
+git clone https://github.com/diwasp1/hisab-kitab.git
 cd hisab-kitab
 ```
 
