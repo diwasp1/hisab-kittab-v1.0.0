@@ -10,7 +10,7 @@ interface FixedHeaderProps {
   className?: string
 }
 
-export function FixedHeader({ title = "Hisab Kitab", showLogo = true, className }: FixedHeaderProps) {
+export function FixedHeader({ title = "Hisab Kittab", showLogo = true, className }: FixedHeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {

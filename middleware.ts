@@ -5,7 +5,7 @@ export async function middleware(request: NextRequest) {
   const response = NextResponse.next()
 
   // Check for demo mode in cookies
-  const isDemoMode = request.cookies.get("hisabKitabDemoMode")?.value === "true"
+  const isDemoMode = request.cookies.get("hisabKittabDemoMode")?.value === "true"
 
   // If in demo mode, handle routing for demo user
   if (isDemoMode) {

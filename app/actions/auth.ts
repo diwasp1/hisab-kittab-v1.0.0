@@ -23,7 +23,7 @@ export async function signUp(formData: FormData) {
   }
 
   // For demo, just enable demo mode
-  cookies().set("hisabKitabDemoMode", "true", { path: "/", maxAge: 60 * 60 * 24 * 30 })
+  cookies().set("hisabKittabDemoMode", "true", { path: "/", maxAge: 60 * 60 * 24 * 30 })
   redirect("/dashboard")
 }
 
@@ -46,14 +46,14 @@ export async function signIn(formData: FormData) {
   }
 
   // For demo, just enable demo mode
-  cookies().set("hisabKitabDemoMode", "true", { path: "/", maxAge: 60 * 60 * 24 * 30 })
+  cookies().set("hisabKittabDemoMode", "true", { path: "/", maxAge: 60 * 60 * 24 * 30 })
   redirect("/dashboard")
 }
 
 // Modified to return a URL instead of redirecting directly
 export async function signOut() {
   // Just disable demo mode
-  cookies().set("hisabKitabDemoMode", "false", { path: "/", maxAge: 0 })
+  cookies().set("hisabKittabDemoMode", "false", { path: "/", maxAge: 0 })
 
   // Return the URL instead of redirecting
   return { redirectUrl: "/login" }

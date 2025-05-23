@@ -91,7 +91,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (typeof window !== "undefined") {
       try {
-        const savedSettings = localStorage.getItem("hisabKitabSettings")
+        const savedSettings = localStorage.getItem("hisabKittabSettings")
         if (savedSettings) {
           const parsedSettings = JSON.parse(savedSettings) as Partial<AppSettings>
 
@@ -112,7 +112,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
   // Save settings to localStorage whenever they change
   useEffect(() => {
     if (typeof window !== "undefined") {
-      localStorage.setItem("hisabKitabSettings", JSON.stringify(settings))
+      localStorage.setItem("hisabKittabSettings", JSON.stringify(settings))
     }
   }, [settings])
 
@@ -303,7 +303,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
 
     // Set cookie for demo mode
     if (typeof window !== "undefined") {
-      document.cookie = "hisabKitabDemoMode=true; path=/; max-age=86400"
+      document.cookie = "hisabKittabDemoMode=true; path=/; max-age=86400"
     }
   }
 

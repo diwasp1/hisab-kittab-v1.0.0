@@ -146,7 +146,7 @@ export default function UserPage() {
 
         {/* App Version */}
         <div className="text-center py-4">
-          <p className="text-sm text-muted-foreground">Hisab Kitab v1.0.0</p>
+          <p className="text-sm text-muted-foreground">Hisab Kittab v1.0.0</p>
           <p className="text-xs text-muted-foreground">Demo Version</p>
         </div>
       </div>

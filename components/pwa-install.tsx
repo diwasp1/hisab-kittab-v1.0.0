@@ -131,7 +131,7 @@ export function PWAInstall() {
           <div className="flex items-center space-x-3">
             <AppLogo size="sm" className="w-10 h-10" />
             <div>
-              <h3 className="font-semibold text-sm">Install Hisab Kitab</h3>
+              <h3 className="font-semibold text-sm">Install Hisab Kittab</h3>
               <p className="text-xs text-muted-foreground">Get quick access from your home screen</p>
             </div>
           </div>

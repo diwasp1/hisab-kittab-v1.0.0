@@ -145,7 +145,7 @@ self.addEventListener("push", (event) => {
     ],
   }
 
-  event.waitUntil(self.registration.showNotification("Hisab Kitab", options))
+  event.waitUntil(self.registration.showNotification("Hisab Kittab", options))
 })
 
 // Notification click handling

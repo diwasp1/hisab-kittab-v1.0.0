@@ -1,6 +1,6 @@
 {
-  "name": "Hisab Kitab - Money Tracking App",
-  "short_name": "Hisab Kitab",
+  "name": "Hisab Kittab - Money Tracking App",
+  "short_name": "Hisab Kittab",
   "description": "Track money you lent and borrowed with friends and family",
   "start_url": "/",
   "display": "standalone",

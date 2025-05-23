@@ -46,7 +46,7 @@ export function GreetingHeader() {
         <h1 className="text-lg sm:text-xl font-bold text-gray-800 truncate">
           {greeting}, {profile?.full_name?.split(" ")[0] || "Demo"}
         </h1>
-        <p className="text-xs sm:text-sm text-gray-500">Welcome to Hisab Kitab</p>
+        <p className="text-xs sm:text-sm text-gray-500">Welcome to Hisab Kittab</p>
       </div>
     </div>
   )

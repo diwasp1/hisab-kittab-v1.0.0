@@ -11,7 +11,7 @@ export function Navbar() {
     <div className="border-b">
       <div className="flex h-16 items-center px-4">
         <Link href="/dashboard" className="font-bold text-xl">
-          Hisab Kitab
+          Hisab Kittab
         </Link>
         <div className="ml-2 bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Demo Mode</div>
         <nav className="mx-6 flex items-center space-x-4 lg:space-x-6">
