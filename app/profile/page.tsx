@@ -15,7 +15,7 @@ export default function ProfilePage() {
   const { profile } = useDemoMode()
   const [isEditing, setIsEditing] = useState(false)
   const [fullName, setFullName] = useState(profile?.full_name || "")
-  const [email, setEmail] = useState("demo@hisabkitab.com")
+  const [email, setEmail] = useState("demo@hisabkittab.com")
   const [phone, setPhone] = useState("+91 9876543210")
   const [avatarUrl, setAvatarUrl] = useState(profile?.photo_url || profile?.avatar_url || "")
 
@@ -47,7 +47,7 @@ export default function ProfilePage() {
               />
               <div className="text-center">
                 <h2 className="text-xl font-semibold">{profile?.full_name || "Demo User"}</h2>
-                <p className="text-sm text-muted-foreground">demo@hisabkitab.com</p>
+                <p className="text-sm text-muted-foreground">demo@hisabkittab.com</p>
               </div>
             </div>
           </CardContent>

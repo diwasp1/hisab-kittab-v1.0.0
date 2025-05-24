@@ -1,6 +1,6 @@
 {
-  "name": "Hisab Kitab",
-  "short_name": "HisabKitab",
+  "name": "Hisab Kittab",
+  "short_name": "HisabKittab",
   "description": "Your Personal Finance Manager",
   "start_url": "/",
   "display": "standalone",

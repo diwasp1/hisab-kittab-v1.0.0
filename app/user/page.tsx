@@ -78,7 +78,7 @@ export default function UserPage() {
                 <Mail className="h-5 w-5 text-gray-400 mr-3" />
                 <div className="flex-1">
                   <p className="text-sm text-gray-500">E-mail</p>
-                  <p className="font-medium">demo@hisabkitab.com</p>
+                  <p className="font-medium">demo@hisabkittab.com</p>
                 </div>
               </div>
 

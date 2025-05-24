@@ -1,4 +1,4 @@
-# Hisab Kitab v1.0.0
+# Hisab Kittab v1.0.0
 
 A modern Progressive Web App (PWA) for tracking personal finances and managing money lending/borrowing with friends and family.
 
@@ -31,8 +31,8 @@ A modern Progressive Web App (PWA) for tracking personal finances and managing m
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/diwasp1/hisab-kitab.git
-cd hisab-kitab
+git clone https://github.com/diwasp1/hisab-kittab.git
+cd hisab-kittab
 ```
 
 2. Install dependencies:

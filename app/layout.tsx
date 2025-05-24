@@ -11,12 +11,12 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
-  title: "Hisab Kitab - Money Tracking App",
+  title: "Hisab Kittab - Money Tracking App",
   description: "Track money you lent and borrowed with friends and family",
   keywords: ["money tracking", "finance", "lending", "borrowing", "personal finance"],
-  authors: [{ name: "Hisab Kitab Team" }],
-  creator: "Hisab Kitab",
-  publisher: "Hisab Kitab",
+  authors: [{ name: "Hisab Kittab Team" }],
+  creator: "Hisab Kittab",
+  publisher: "Hisab Kittab",
   formatDetection: {
     email: false,
     address: false,
@@ -26,25 +26,25 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Hisab Kitab",
+    title: "Hisab Kittab",
   },
   openGraph: {
     type: "website",
-    siteName: "Hisab Kitab",
-    title: "Hisab Kitab - Money Tracking App",
+    siteName: "Hisab Kittab",
+    title: "Hisab Kittab - Money Tracking App",
     description: "Track money you lent and borrowed with friends and family",
     images: [
       {
         url: "/icons/icon-512x512.png",
         width: 512,
         height: 512,
-        alt: "Hisab Kitab Logo",
+        alt: "Hisab Kittab Logo",
       },
     ],
   },
   twitter: {
     card: "summary",
-    title: "Hisab Kitab - Money Tracking App",
+    title: "Hisab Kittab - Money Tracking App",
     description: "Track money you lent and borrowed with friends and family",
     images: ["/icons/icon-512x512.png"],
   },
@@ -80,10 +80,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="application-name" content="Hisab Kitab" />
+        <meta name="application-name" content="Hisab Kittab" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Hisab Kitab" />
+        <meta name="apple-mobile-web-app-title" content="Hisab Kittab" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-TileColor" content="#000000" />

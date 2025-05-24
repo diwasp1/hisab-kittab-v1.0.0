@@ -50,7 +50,7 @@ export default function SettingsPage() {
       const url = URL.createObjectURL(blob)
       const a = document.createElement("a")
       a.href = url
-      a.download = `hisab-kitab-export-${new Date().toISOString().split("T")[0]}.json`
+      a.download = `hisab-kittab-export-${new Date().toISOString().split("T")[0]}.json`
       document.body.appendChild(a)
       a.click()
       document.body.removeChild(a)
@@ -285,7 +285,7 @@ export default function SettingsPage() {
             <Button
               variant="outline"
               className="w-full justify-start h-12"
-              onClick={() => openExternalLink("https://hisabkitab.com/help")}
+              onClick={() => openExternalLink("https://hisabkittab.com/help")}
             >
               <HelpCircle className="h-4 w-4 mr-2" />
               Help Center
@@ -294,7 +294,7 @@ export default function SettingsPage() {
             <Button
               variant="outline"
               className="w-full justify-start h-12"
-              onClick={() => openExternalLink("https://hisabkitab.com/support")}
+              onClick={() => openExternalLink("https://hisabkittab.com/support")}
             >
               Contact Support
               <ExternalLink className="h-3 w-3 ml-2 text-muted-foreground" />
@@ -302,7 +302,7 @@ export default function SettingsPage() {
             <Button
               variant="outline"
               className="w-full justify-start h-12"
-              onClick={() => openExternalLink("https://hisabkitab.com/privacy")}
+              onClick={() => openExternalLink("https://hisabkittab.com/privacy")}
             >
               Privacy Policy
               <ExternalLink className="h-3 w-3 ml-2 text-muted-foreground" />
@@ -310,7 +310,7 @@ export default function SettingsPage() {
             <Button
               variant="outline"
               className="w-full justify-start h-12"
-              onClick={() => openExternalLink("https://hisabkitab.com/terms")}
+              onClick={() => openExternalLink("https://hisabkittab.com/terms")}
             >
               Terms of Service
               <ExternalLink className="h-3 w-3 ml-2 text-muted-foreground" />
